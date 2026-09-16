@@ -3,8 +3,8 @@ export const SITE = {
   role: "AI Developer • Full Stack Engineer • Cybersecurity Enthusiast",
   tagline: "Building intelligent systems.",
   description:
-    "Somesh M is a Computer Science and Business Systems student and developer building AI-powered, full-stack and intelligent software systems.",
-  url: "https://somesh-m.netlify.app/",
+    "Somesh M is a Computer Science and Business Systems student and developer in India building AI-powered, full-stack and intelligent software systems — RAG applications, web platforms and mobile apps.",
+  url: "https://somesh-m.vercel.app/",
   github: "https://github.com/Somesh4206/",
   linkedin: "https://www.linkedin.com/in/somesh4206/",
   leetcode: "https://leetcode.com/u/somesh-m/",

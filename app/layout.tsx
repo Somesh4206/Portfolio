@@ -32,36 +32,65 @@ export const metadata: Metadata = {
     template: "%s · Somesh M",
   },
   description:
-    "Portfolio of Somesh M, a Computer Science student and developer building AI-powered, full-stack and intelligent software systems.",
+    "Somesh M is a Computer Science student, AI developer and full stack engineer building AI-powered intelligent software systems, RAG applications and full-stack products in India.",
   keywords: [
     "Somesh M",
     "Somesh M developer",
     "Somesh M AI developer",
+    "Somesh M full stack engineer",
     "Somesh M portfolio",
+    "Somesh M software engineer",
+    "Somesh M India",
     "AI Developer",
     "Full Stack Engineer",
+    "Computer Science student",
     "RAG systems",
     "Generative AI",
+    "Intelligent software systems",
   ],
   authors: [{ name: "Somesh M", url: SITE.url }],
   creator: "Somesh M",
+  publisher: "Somesh M",
   alternates: { canonical: SITE.url },
+  applicationName: "Somesh M Portfolio",
+  verification: {
+    google: "googleaee54bf2d5a00ed1",
+  },
   openGraph: {
     type: "website",
     url: SITE.url,
+    locale: "en_US",
     siteName: "Somesh M — Portfolio",
     title: "Somesh M — AI Developer & Full Stack Engineer",
     description:
-      "Portfolio of Somesh M, a Computer Science student and developer building AI-powered, full-stack and intelligent software systems.",
-    locale: "en_US",
+      "Somesh M is a Computer Science student, AI developer and full stack engineer building AI-powered intelligent software systems, RAG applications and full-stack products in India.",
+    images: [
+      {
+        url: `${SITE.url}opengraph-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Somesh M — AI Developer & Full Stack Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Somesh M — AI Developer & Full Stack Engineer",
     description:
-      "Portfolio of Somesh M, a Computer Science student and developer building AI-powered, full-stack and intelligent software systems.",
+      "Somesh M is a Computer Science student, AI developer and full stack engineer building AI-powered intelligent software systems, RAG applications and full-stack products in India.",
+    images: [`${SITE.url}opengraph-image.png`],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   category: "portfolio",
 };
 
@@ -76,10 +105,17 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
+      "@id": `${SITE.url}#person`,
       name: "Somesh M",
       url: SITE.url,
+      image: `${SITE.url}opengraph-image.png`,
       jobTitle: "AI Developer, Full Stack Engineer",
-      sameAs: [SITE.github, SITE.linkedin, SITE.leetcode, SITE.hackerrank],
+      description:
+        "Computer Science & Business Systems student, AI developer and full stack engineer building AI-powered intelligent software systems.",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IN",
+      },
       knowsAbout: [
         "Artificial Intelligence",
         "Machine Learning",
@@ -87,12 +123,31 @@ const jsonLd = {
         "RAG systems",
         "Full-stack development",
         "Cybersecurity",
+        "React",
+        "Python",
+        "Flutter",
+      ],
+      sameAs: [SITE.github, SITE.linkedin, SITE.leetcode, SITE.hackerrank],
+      alumniof: [
+        {
+          "@type": "Organization",
+          name: "Brainery Spot Technologies",
+        },
+        {
+          "@type": "Organization",
+          name: "Nandha Info Tech",
+        },
       ],
     },
     {
       "@type": "WebSite",
+      "@id": `${SITE.url}#website`,
       name: "Somesh M — Portfolio",
       url: SITE.url,
+      inLanguage: "en",
+      publisher: {
+        "@id": `${SITE.url}#person`,
+      },
     },
   ],
 };
