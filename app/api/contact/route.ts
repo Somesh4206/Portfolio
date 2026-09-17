@@ -230,9 +230,14 @@ export async function POST(req: NextRequest) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  if (!apiKey || !to || !isValidEmail(to) || !fromEmail || !isValidEmail(fromEmail)) {
-    console.error("contact: email service is not configured");
+  // Default to Resend's free onboarding sender when no custom/verified sender is configured.
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
+  if (!apiKey || !to || !isValidEmail(to) || !isValidEmail(fromEmail)) {
+    console.error("contact: email service is not configured", {
+      hasKey: Boolean(apiKey),
+      to,
+      fromEmail,
+    });
     return NextResponse.json(
       { success: false, message: "Unable to send your message." },
       { status: 500 }
@@ -264,7 +269,7 @@ export async function POST(req: NextRequest) {
   ]);
 
   if (notify.status === "rejected") {
-    console.error("contact: notification send failed");
+    console.error("contact: notification send failed", notify.reason);
     return NextResponse.json(
       { success: false, message: "Unable to send your message." },
       { status: 500 }
@@ -272,7 +277,7 @@ export async function POST(req: NextRequest) {
   }
   if (ack.status === "rejected") {
     // notification landed; acknowledgement is best-effort
-    console.error("contact: acknowledgement send failed");
+    console.error("contact: acknowledgement send failed", ack.reason);
   }
 
   return NextResponse.json({ success: true });
