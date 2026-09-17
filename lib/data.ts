@@ -9,6 +9,8 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/in/somesh4206/",
   leetcode: "https://leetcode.com/u/somesh-m/",
   hackerrank: "https://www.hackerrank.com/profile/someshm7662",
+  /** Public contact address used ONLY for the visible "Email me" mailto link. */
+  email: "someshm7662@gmail.com",
 } as const;
 
 export type ProjectLink = { label: string; href: string };
