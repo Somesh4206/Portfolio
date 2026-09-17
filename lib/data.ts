@@ -169,7 +169,7 @@ export const PROJECTS: Project[] = [
       "RAG retrieval + escalation policy",
       "LLM evaluation + human validation",
     ],
-    links: [{ label: "GitHub", href: "https://github.com/Somesh4206/hiver-support-agent/" }],
+    links: [{ label: "GitHub", href: "https://github.com/Somesh4206/Apple-Support-Agent" }],
     visual: "support",
   },
   {
