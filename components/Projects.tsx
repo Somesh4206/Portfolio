@@ -76,21 +76,27 @@ function Spread({ p, flip }: { p: Project; flip: boolean }) {
 
         <Reveal delay={160}>
           <div className={`mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 border-t ${hair} pt-6`}>
-            {p.links.length > 0 ? (
-              p.links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="u-link group inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-[0.18em]"
-                >
-                  View project
-                  <ArrowUpRight size={15} className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
-              ))
-            ) : (
-              <span className={`text-[13px] ${sub}`}>Code available on request — see GitHub profile for more.</span>
+            <a
+              href={`/projects/${p.id}`}
+              className="u-link group inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-[0.18em]"
+            >
+              View case study
+              <ArrowUpRight size={15} className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+            {p.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="u-link group inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] opacity-70 hover:opacity-100"
+              >
+                {l.label}
+                <ArrowUpRight size={15} className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            ))}
+            {p.links.length === 0 && (
+              <span className={`text-[13px] ${sub}`}>Code available on request.</span>
             )}
             <span className={`label ml-auto hidden sm:block ${dark ? "text-latte/40" : "text-fawn/70"}`}>
               {flip ? "Spread" : "Story"} · {p.index} / 06
@@ -111,7 +117,7 @@ export default function Projects() {
           index="03"
           eyebrow="Selected work"
           title={<>Selected<br />work<span className="text-clay">.</span></>}
-          lede="Five systems and one small experiment — each told as a magazine spread. Hover a title; it leans closer."
+          lede="Six builds, each told as a magazine spread with its own case-study page. Hover a title; it leans closer."
         />
       </div>
       {main.map((p, i) => (
@@ -123,13 +129,20 @@ export default function Projects() {
           <Reveal>
             <article aria-label={`${mini[0].name}`} className="grid gap-8 border-y border-line py-10 md:grid-cols-2 md:items-center">
               <div>
-                <p className="label text-clay">[06 — Experiment]</p>
+                <p className="label text-clay">[06 — Live project]</p>
                 <h3 className="font-display mt-3 text-4xl font-medium uppercase text-choco">{mini[0].name}</h3>
                 <p className="font-display mt-1 text-lg italic text-bark">{mini[0].tagline}</p>
                 <p className="mt-3 max-w-md text-[15px] leading-relaxed text-fawn">{mini[0].description}</p>
-                <a href={mini[0].links[0].href} target="_blank" rel="noopener noreferrer" className="u-link mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-choco">
-                  View project <ArrowUpRight size={15} />
-                </a>
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                  <a href={`/projects/${mini[0].id}`} className="u-link inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-choco">
+                    View case study <ArrowUpRight size={15} />
+                  </a>
+                  {mini[0].links.map((l) => (
+                    <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="u-link inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-choco opacity-70 hover:opacity-100">
+                      {l.label} <ArrowUpRight size={15} />
+                    </a>
+                  ))}
+                </div>
               </div>
               <GameVisual />
             </article>

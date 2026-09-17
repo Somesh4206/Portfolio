@@ -15,6 +15,8 @@ export const SITE = {
 
 export type ProjectLink = { label: string; href: string };
 
+export type ProjectScreenshot = { src: string; width: number; height: number; alt: string };
+
 export type Project = {
   id: string;
   index: string;
@@ -27,6 +29,7 @@ export type Project = {
   stack: string[];
   features: string[];
   links: ProjectLink[];
+  screenshots?: ProjectScreenshot[];
   visual: "skillvision" | "blueprint" | "diagnorax" | "jedu" | "support" | "game";
   note?: string;
 };
@@ -38,23 +41,31 @@ export const PROJECTS: Project[] = [
     name: "SkillVision AI",
     tagline: "Intelligent Career & Skill Intelligence System",
     description:
-      "An AI-powered platform that helps users understand their skills, analyze resumes, discover career paths, and generate personalized learning journeys.",
+      "An AI-powered career copilot and placement platform — real-time resume parsing, ATS scoring, skill-gap analysis, milestone roadmaps, mock interviews, and AI job matching, powered by Google Gemini.",
     problem:
       "Job seekers can't see how their skills map to real roles, and generic career advice ignores what's actually on their resume.",
     solution:
-      "SkillVision combines resume analysis, an ATS scanner and builder, skill-gap detection, and RAG-based knowledge retrieval to turn a resume into a guided career plan.",
+      "SkillVision parses resumes into structured profiles, scores ATS compatibility, maps skill gaps against target roles, and generates milestone roadmaps, mock interviews, and matched job leads — with RAG retrieval grounding its guidance.",
     contribution:
-      "Designed and built the platform — career analysis flows, skill-gap logic, learning-path generation, resume tooling, and RAG retrieval.",
-    stack: ["Python", "React", "RAG", "LLM APIs", "REST APIs", "Vector Retrieval"],
+      "Designed and built the platform — resume parsing and ATS scoring flows, skill radar and gap logic, roadmap and interview modules, job-matching engine, and RAG-grounded career guidance.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Express", "Google Gemini API"],
     features: [
-      "AI career analysis",
-      "Skill-gap identification",
-      "Personalized learning paths",
-      "Resume analysis",
-      "ATS resume scanner + builder",
+      "ATS resume scoring (0–100) + parsing",
+      "Skill radar + gap identification",
+      "Milestone roadmaps + streaks",
+      "Mock interview arena with AI critique",
+      "AI job matching + application tracking",
       "RAG-based knowledge retrieval",
     ],
-    links: [{ label: "GitHub", href: "https://github.com/Somesh4206/SkillVision-AI" }],
+    links: [
+      { label: "GitHub", href: "https://github.com/Somesh4206/SkillVision" },
+      { label: "Live Demo", href: "https://skillvision.vercel.app" },
+    ],
+    screenshots: [
+      { src: "/projects/skillvision-ai/dashboard-preview.jpg", width: 1376, height: 768, alt: "SkillVision placement cockpit and analytics dashboard" },
+      { src: "/projects/skillvision-ai/interview-preview.jpg", width: 1376, height: 768, alt: "SkillVision AI mock interview arena" },
+      { src: "/projects/skillvision-ai/job-matcher-preview.jpg", width: 1376, height: 768, alt: "SkillVision AI job matching hub" },
+    ],
     visual: "skillvision",
   },
   {
@@ -63,22 +74,28 @@ export const PROJECTS: Project[] = [
     name: "OpenBlueprint",
     tagline: "From Measurements to Intelligent Blueprints.",
     description:
-      "An AI-assisted architectural planning platform for residential layouts — from plot measurements and room requirements to 2D blueprints, 3D visualization, and cost estimation.",
+      "An AI-powered architectural planning and preliminary blueprint generation platform for homes — plot dimensions in, editable floor plans out, with 2D editing, 3D visualization, cost estimation, and an AI design assistant.",
     problem:
       "Early-stage home planning is guesswork: room needs, plot constraints, light, ventilation, and cost are reasoned about separately, if at all.",
     solution:
-      "OpenBlueprint runs a guided pipeline — measurements → requirements → AI analysis → design strategies → 2D blueprint → 3D view → cost estimate — using zone-based spatial planning and architectural rules to draft preliminary layouts.",
+      "OpenBlueprint turns natural-language requirements into structured constraints, generates five design strategies with a zone-based BSP layout engine, and offers a CAD-like 2D editor, clay-render 3D views, INR cost estimation, and a RAG knowledge assistant.",
     contribution:
-      "Designed the planning pipeline, zone-based spatial logic, strategy system (space, ventilation, open-plan, privacy, Vastu), and the blueprint-to-cost UX.",
-    stack: ["React", "TypeScript", "AI APIs", "3D Visualization", "REST APIs"],
+      "Designed and built the platform — strategy generation, BSP-based layout logic, 2D editor tooling, 3D visualization, cost estimation, and the AI/RAG assistants.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "AI APIs", "3D Visualization"],
     features: [
-      "Plot → requirements → AI analysis flow",
-      "5 design strategies incl. Vastu-compliant",
-      "Zone-based spatial planning",
-      "2D blueprint + 3D visualization",
-      "Cost estimation + AI assistant + export",
+      "5 strategies incl. Vastu-compliant + BSP engine",
+      "CAD-like 2D editor + 45-item furniture library",
+      "Clay-render 3D visualization",
+      "INR cost estimator with 4 build grades",
+      "Natural-language AI design assistant",
+      "RAG architectural knowledge assistant + export",
     ],
-    links: [],
+    links: [{ label: "GitHub", href: "https://github.com/Somesh4206/OpenBlueprint" }],
+    screenshots: [
+      { src: "/projects/openblueprint/workspace-2d.png", width: 1440, height: 900, alt: "OpenBlueprint interactive 2D blueprint editor" },
+      { src: "/projects/openblueprint/workspace-3d.png", width: 1440, height: 900, alt: "OpenBlueprint 3D home visualization" },
+      { src: "/projects/openblueprint/cost-estimator.png", width: 1440, height: 900, alt: "OpenBlueprint construction cost estimator" },
+    ],
     visual: "blueprint",
     note: "Preliminary layouts for exploration — not a substitute for a licensed architect.",
   },
@@ -88,21 +105,21 @@ export const PROJECTS: Project[] = [
     name: "DiagnoraX",
     tagline: "Your Personal AI Health Companion",
     description:
-      "An AI-powered health companion for symptom understanding, doctor discovery, prescription processing, medicine reminders, and lab-report analysis. Built during a Machine Learning internship at Brainery Spot Technologies.",
+      "An AI-powered health companion for symptom understanding, doctor discovery, prescription processing, medicine reminders, and lab-report analysis — begun as a React web app and converted to a Flutter mobile app. Built during a Machine Learning internship at Brainery Spot Technologies.",
     problem:
       "Health information is scattered across prescriptions, lab reports, and memory — hard to organize, easy to misunderstand.",
     solution:
-      "DiagnoraX centralizes the everyday health workflow: an AI symptom checker with severity and next-step guidance, doctor recommendations, prescription OCR, interaction warnings, reminders, and report analysis.",
+      "DiagnoraX centralizes the everyday health workflow: an AI symptom checker with severity and next-step guidance, body-composition analysis, doctor recommendations, prescription OCR, interaction warnings, reminders, and report analysis — with Firebase auth and data throughout.",
     contribution:
-      "Built DiagnoraX end-to-end during my ML internship — React/Vite frontend, Firebase auth and data, Express services, and Gemini-powered assistance flows.",
-    stack: ["React", "Vite", "Tailwind CSS", "Firebase", "Firestore", "Express", "Google Gemini API"],
+      "Built DiagnoraX end-to-end during my ML internship — the React web app and its Flutter conversion, Firebase auth and Firestore data, and Gemini-powered assistance flows.",
+    stack: ["Flutter", "Dart", "React", "Firebase", "Firestore", "Google Gemini API"],
     features: [
       "AI symptom checker + next-step guidance",
-      "Doctor recommendation + emergency alerts",
+      "Doctor recommendation + body analysis",
       "Prescription OCR + medicine reminders",
       "Interaction warnings + lab-report analysis",
     ],
-    links: [],
+    links: [{ label: "GitHub", href: "https://github.com/Somesh4206/DiagnoraX-App" }],
     visual: "diagnorax",
     note: "A software project for organizing health information — not professional medical diagnosis.",
   },
@@ -141,7 +158,7 @@ export const PROJECTS: Project[] = [
       "A retrieval pipeline over reconstructed conversations — TF-IDF baseline vs. embeddings, RAG retrieval, classification, and an explicit escalation policy, evaluated by LLMs and validated by humans.",
     contribution:
       "Built the conversation-reconstruction and retrieval pipeline, classification and escalation logic, and the evaluation harness.",
-    stack: ["Python", "RAG", "Embeddings", "TF-IDF", "LLM Evaluation", "REST APIs"],
+    stack: ["Python", "Jupyter Notebook", "RAG", "Embeddings", "TF-IDF", "LLM Evaluation"],
     features: [
       "Conversation reconstruction + classification",
       "TF-IDF baseline vs. embeddings",
@@ -155,15 +172,27 @@ export const PROJECTS: Project[] = [
     id: "adventure-game",
     index: "06",
     name: "Adventure Game",
-    tagline: "A small playable experiment",
+    tagline: "“The Archive” — full-stack text adventure",
     description:
-      "A compact game project — kept deliberately small next to the main AI systems work.",
-    problem: "—",
-    solution: "A focused build to practice game logic and interaction.",
-    contribution: "Designed and implemented the game.",
-    stack: ["JavaScript"],
-    features: ["Playable game loop", "Interactive scenes"],
-    links: [{ label: "GitHub", href: "https://github.com/Somesh4206/adventure-game" }],
+      "A full-stack text adventure game, “The Archive,” with a Spring Boot backend, React frontend, MySQL database, and JWT authentication — three playable chapters, an achievements system, and a leaderboard. Live demo linked below.",
+    problem:
+      "Game feel alone doesn't make a product: accounts, persistent progress, and competition need real backend engineering behind the story.",
+    solution:
+      "A Java/Spring Boot API with JWT-secured accounts over MySQL, a React client rendering three story chapters, and achievement and leaderboard systems layered on top.",
+    contribution:
+      "Designed and built the full stack — API, schema, auth, game client, chapters, achievements, and leaderboard — and shipped a live demo.",
+    stack: ["Java", "Spring Boot", "React", "JavaScript", "MySQL", "JWT"],
+    features: [
+      "Three playable story chapters",
+      "JWT authentication + accounts",
+      "Achievements system",
+      "Leaderboard",
+      "Deployed live demo",
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/Somesh4206/adventure-game" },
+      { label: "Live Demo", href: "https://adventure-game-navy.vercel.app" },
+    ],
     visual: "game",
   },
 ];
@@ -243,9 +272,9 @@ export const MILESTONES = [
 ];
 
 export const NAV = [
-  { n: "01", label: "Home", href: "#home" },
-  { n: "02", label: "About", href: "#about" },
-  { n: "03", label: "Work", href: "#work" },
-  { n: "04", label: "Experience", href: "#experience" },
-  { n: "05", label: "Contact", href: "#contact" },
+  { n: "01", label: "Home", href: "/#home" },
+  { n: "02", label: "About", href: "/#about" },
+  { n: "03", label: "Work", href: "/#work" },
+  { n: "04", label: "Experience", href: "/#experience" },
+  { n: "05", label: "Contact", href: "/#contact" },
 ] as const;
