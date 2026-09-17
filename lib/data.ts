@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     ],
     links: [
       { label: "GitHub", href: "https://github.com/Somesh4206/SkillVision" },
-      { label: "Live Demo", href: "https://skillvision.vercel.app" },
+      { label: "Live Demo", href: "https://skillvisionai.onrender.com" },
     ],
     screenshots: [
       { src: "/projects/skillvision-ai/dashboard-preview.jpg", width: 1376, height: 768, alt: "SkillVision placement cockpit and analytics dashboard" },
@@ -142,7 +142,11 @@ export const PROJECTS: Project[] = [
       "Online classes + AI-assisted attendance",
       "Translation + multilingual learning",
     ],
-    links: [],
+    links: [
+      { label: "GitHub", href: "https://github.com/Somesh4206/JeduAI" },
+      { label: "Live Demo", href: "https://jeduai-connect.netlify.app" },
+      { label: "Android APK", href: "https://drive.usercontent.google.com/download?id=1HthWUYS96OI2fh8-SLpyDQl20pb59Ltc&export=download&authuser=0&confirm=t&uuid=8970889b-7c4c-4eff-8266-c136ddc01e45&at=AMrWOn0yi_Wc8XpUL59xFWtqWWvB%3A1789634457840" },
+    ],
     visual: "jedu",
   },
   {
