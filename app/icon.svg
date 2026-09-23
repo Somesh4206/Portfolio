@@ -1,15 +1,44 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background circle with gradient -->
-  <circle cx="256" cy="256" r="256" fill="url(#gradient)"/>
+  <!-- Dark background -->
+  <rect width="512" height="512" fill="#1a1a1a"/>
   
-  <!-- Initials "SM" -->
-  <text x="256" y="340" font-family="Arial, sans-serif" font-size="280" font-weight="700" fill="#F3EDE2" text-anchor="middle" dominant-baseline="middle">SM</text>
+  <!-- Letter S with gold gradient -->
+  <path d="M 120 140 Q 120 100 160 90 Q 200 80 240 100 Q 260 110 260 130 Q 260 150 240 160 L 200 180 Q 160 200 160 240 Q 160 270 190 285 Q 220 300 260 290 Q 280 285 280 270" 
+        stroke="url(#goldGradient)" 
+        stroke-width="35" 
+        fill="none" 
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
   
-  <!-- Gradient definition -->
+  <!-- Letter M with silver gradient and modern angular design -->
+  <path d="M 300 290 L 300 150 L 360 230 L 420 150 L 420 290" 
+        stroke="url(#silverGradient)" 
+        stroke-width="35" 
+        fill="none" 
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  
+  <!-- Decorative line under M -->
+  <path d="M 360 230 L 360 280" 
+        stroke="url(#silverGradient)" 
+        stroke-width="20" 
+        fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Gradient definitions -->
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2C4A6F;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1E3047;stop-opacity:1" />
+    <!-- Gold gradient for S -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Silver gradient for M -->
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E8E8E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A8A8A8;stop-opacity:1" />
     </linearGradient>
   </defs>
 </svg>
